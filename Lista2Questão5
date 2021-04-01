@@ -1,0 +1,30 @@
+//Desenvolva um programa em C que armazene 125 valores de tipo inteiro em uma matriz de 3 (três) dimensões,
+//essa matriz deverá ser desenvolvida em um formato parecido com um cubo. Exiba em tela o resultado obtido.
+
+#include<stdio.h>
+#include<stdlib.h>
+void exibirMatriz (int matriz[5][5][5]);//5*5*5=125 valores
+int main(){
+	int matriz[5][5][5],i,j,m;		
+	for (i=0;i<5;i++){
+		for (j=0;j<5;j++){
+			for(m=0;m<5;m++){
+				matriz[i][j][m] = rand()%50;				
+			}			
+		}
+	}
+	exibirMatriz(matriz);		
+}
+void exibirMatriz(int matriz[5][5][5]){
+	int i,j,m;
+    printf("\nResultado:\n\n");
+	for (i=0;i<5;i++){
+		for (j=0;j<5;j++){
+			for (m=0;m<5;m++){
+			printf("[%i]\t", matriz[i][j][m]);
+			}
+		printf("\n\n\n");
+		}
+	printf("\n\n\n");	
+	}	
+}
