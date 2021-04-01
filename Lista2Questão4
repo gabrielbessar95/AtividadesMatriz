@@ -1,0 +1,79 @@
+//Desenvolva um programa em C que leia uma matriz 3 x 6 com valores reais.
+//( a ) Imprima a soma de todos os elementos das colunas ímpares.
+//( b ) Imprima a média aritmética dos elementos da segunda e quarta colunas.
+//( c ) Substitua os valores da sexta coluna pela soma dos valores das colunas 1 e 2.
+//( d ) Imprima a matriz modificada.
+
+#include<stdlib.h>
+#include<stdio.h>
+#include <stdlib.h>
+void matrizPrincipal (int matriz[3][6]);
+void colunaImpar (int matriz[3][6]);
+void mediaColunas2e4(int matriz[3][6]);
+void matrizModificada(int matriz[3][6]);
+main(){	
+	int matriz[3][6];
+	int i,j;	
+	for (i=0; i<3; i++){
+		for (j=0;j<6;j++){
+			matriz[i][j]= rand()%100;//atribui os valores aleatórios na matriz com a função rand
+		}
+	}
+	matrizPrincipal(matriz);
+	colunaImpar(matriz);
+	mediaColunas2e4(matriz);
+	matrizModificada(matriz);
+}
+void matrizPrincipal (int matriz[3][6]){
+	int i,j;
+	printf("\tPrincipal:\n");
+	for (i=0;i<3;i++){
+		for (j=0;j<6;j++){
+			printf("[%i]\t",matriz[i][j]);
+		}
+		printf("\t\n");
+	}
+}
+void colunaImpar (int matriz[3][6]){
+	int i,j,r=0;
+	printf("\n\tSoma das colunas impares:\n");
+	for (i=0;i<3;i++){
+		for (j=0;j<6;j++){
+			if(j%2 != 0){
+			r = r+matriz[i][j];	
+			}			
+		}		
+	}
+	printf("\t\t[%i]\n",r);
+}
+void mediaColunas2e4(int matriz[3][6]){
+	int i,j,m=0;
+	printf("\n\tMedia aritmetica dos elementos da segunda e quarta colunas:\n");
+	for (i=0;i<3;i++){
+		for (j=0;j<6;j++){
+			if(j>0 && j<5 && j%2 !=0){				
+			 m = (m+matriz[i][j]/6);	
+			}			
+		}		
+	}
+	printf("\t\t[%i]\n",m);
+}
+void matrizModificada(int matriz[3][6]){
+	int i,j,s=0;
+	printf("\n\tMatriz Modificada:\n");
+	for (i=0;i<3;i++){
+		for (j=0;j<6;j++){
+			if(j>=0 && j<2){				
+			 s = (s+(matriz[i][1]+matriz[i][2]));
+			 matriz[i][5] = s;
+			 s = 0;
+			}			
+		}		
+	}
+	for (i=0;i<3;i++){
+		for (j=0;j<6;j++){
+			printf("[%i]\t",matriz[i][j]);
+		}
+		printf("\t\n");
+	}	
+}
